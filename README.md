@@ -15,7 +15,7 @@ Once you have your Swift package set up, adding SwiftyTimber as a dependency is 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/iballan/BasicServiceLocator.git", .upToNextMajor(from: "0.0.1"))
+    .package(url: "https://github.com/iballan/BasicServiceLocator.git", .upToNextMajor(from: "0.0.2"))
 ]
 ```
 
