@@ -25,6 +25,8 @@ final public class BasicServiceLocator: ServiceLocator {
     /// Service registry
     private lazy var reg: Dictionary<String, RegistryRec> = [:]
 
+    public init() { }
+
     /// Resolve the instance name from its type
     /// - Parameter some: Instance of the service
     /// - Returns: Name of the instance
