@@ -5,7 +5,7 @@
 //
 
 /// Service Locator Protocol
-protocol ServiceLocator {
+public protocol ServiceLocator {
     func registerService<T>(_ type: T.Type, lazyInstance: @escaping () -> T)
     func registerService<T>(_ type: T.Type, instance: T)
     func getService<T>(_ type: T.Type) throws -> T

@@ -21,7 +21,7 @@ fileprivate enum RegistryRec {
 }
 
 /// Basic Service Locator is the container and resolver of the Services
-final class BasicServiceLocator: ServiceLocator {
+final public class BasicServiceLocator: ServiceLocator {
     /// Service registry
     private lazy var reg: Dictionary<String, RegistryRec> = [:]
 
@@ -36,7 +36,7 @@ final class BasicServiceLocator: ServiceLocator {
     /// - Parameters:
     ///   - type: Service Type to help resolve the name of the service instance
     ///   - lazyInstance: Callback that will help the BasicServiceLocator create the instance
-    func registerService<T>(_ type: T.Type, lazyInstance: @escaping () -> T) {
+    public func registerService<T>(_ type: T.Type, lazyInstance: @escaping () -> T) {
         let key = typeName(type)
         reg[key] = .Recipe(lazyInstance)
     }
@@ -45,7 +45,7 @@ final class BasicServiceLocator: ServiceLocator {
     /// - Parameters:
     ///   - type: Service Type to help resolve the name of the service instance
     ///   - instance: The service instance
-    func registerService<T>(_ type: T.Type, instance: T) {
+    public func registerService<T>(_ type: T.Type, instance: T) {
         let key = typeName(type)
         reg[key] = .Instance(instance)
     }
@@ -53,7 +53,7 @@ final class BasicServiceLocator: ServiceLocator {
     /// Get the registered service or throws error if Service error if not exists
     /// - Parameter type: Service Type for the service to be located
     /// - Returns: Return the service needed
-    func getService<T>(_ type: T.Type) throws -> T{
+    public func getService<T>(_ type: T.Type) throws -> T{
         let key = typeName(T.self)
         var instance: T? = nil
         if let registryRec = reg[key] {
@@ -76,7 +76,7 @@ final class BasicServiceLocator: ServiceLocator {
 
     /// Clear the service instance from the entries dictionary
     /// - Parameter type: Service Type
-    func clear<T>(_ type: T.Type) {
+    public func clear<T>(_ type: T.Type) {
         let key = typeName(type)
         reg.removeValue(forKey: key)
     }
